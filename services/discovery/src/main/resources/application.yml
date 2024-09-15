@@ -1,0 +1,6 @@
+spring:
+  config:
+#    optional: if we didn't find server, we start without config
+    import: optional:configserver:http://localhost:8888
+  application:
+    name: discovery-service
