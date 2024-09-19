@@ -17,7 +17,7 @@ public class OrderMapper {
 
     public OrderResponse fromOrder(Order order) {
         return new OrderResponse(
-               order.getId(),
+                order.getId(),
                 order.getReference(),
                 order.getTotalAmount(),
                 order.getPaymentMethod(),
