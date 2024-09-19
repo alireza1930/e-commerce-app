@@ -9,10 +9,12 @@ import com.alibou.ecommerce.orderline.OrderLineService;
 import com.alibou.ecommerce.product.ProductClient;
 import com.alibou.ecommerce.product.PurchaseRequest;
 import com.alibou.ecommerce.product.PurchaseResponse;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -50,21 +52,33 @@ public class OrderService {
         }
 
 
-
         //todo: start payment process
 
 
         //send the order confirmation -->notification-ms (kafka)
         orderProducer.sendOrderConfirmation(
                 new OrderConfirmation(
-                request.reference(),
+                        request.reference(),
                         request.amount(),
                         request.paymentMethod(),
                         customer,
                         purchasedProducts
-        ));
+                ));
 
 
         return order.getId();
+    }
+
+    public List<OrderResponse> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::fromOrder)
+                .collect(Collectors.toList());
+    }
+
+    public OrderResponse findById(Integer orderId) {
+        return repository.findById(orderId)
+                .map(mapper::fromOrder)
+                .orElseThrow(() -> new EntityNotFoundException(String.format("No order found with the provided Id: %d", orderId)));
     }
 }
