@@ -10,7 +10,7 @@
         <option value="$PROJECT_DIR$/services/product/pom.xml" />
         <option value="$PROJECT_DIR$/services/order/pom.xml" />
         <option value="$PROJECT_DIR$/services/pom.xml" />
-        <option value="$USER_HOME$/Downloads/microservices-full-code-main/microservices-full-code-main/services/payment/pom.xml" />
+        <option value="$PROJECT_DIR$/services/payment/pom.xml" />
       </list>
     </option>
   </component>

@@ -9,15 +9,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
         <module name="product" />
-        <module name="payment" />
         <module name="discovery" />
+        <module name="payment" />
         <module name="customer" />
         <module name="order" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="payment" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
