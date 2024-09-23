@@ -6,6 +6,8 @@ import com.alibou.ecommerce.kafka.OrderConfirmation;
 import com.alibou.ecommerce.kafka.OrderProducer;
 import com.alibou.ecommerce.orderline.OrderLineRequest;
 import com.alibou.ecommerce.orderline.OrderLineService;
+import com.alibou.ecommerce.payment.PaymentClient;
+import com.alibou.ecommerce.payment.PaymentRequest;
 import com.alibou.ecommerce.product.ProductClient;
 import com.alibou.ecommerce.product.PurchaseRequest;
 import com.alibou.ecommerce.product.PurchaseResponse;
@@ -27,6 +29,7 @@ public class OrderService {
     private final OrderMapper mapper;
     private final OrderLineService orderLineService;
     private final OrderProducer orderProducer;
+    private final PaymentClient paymentClient;
 
     public Integer createOrder(OrderRequest request) {
         // check the customer --> OpenFeign
@@ -52,8 +55,15 @@ public class OrderService {
         }
 
 
-        //todo: start payment process
-
+        // start payment process
+        var paymentRequest = new PaymentRequest(
+                request.amount(),
+                request.paymentMethod(),
+                order.getId(),
+                order.getReference(),
+                customer
+        );
+        paymentClient.requestOrderPayment(paymentRequest);
 
         //send the order confirmation -->notification-ms (kafka)
         orderProducer.sendOrderConfirmation(

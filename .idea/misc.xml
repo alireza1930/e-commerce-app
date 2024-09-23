@@ -11,7 +11,15 @@
         <option value="$PROJECT_DIR$/services/order/pom.xml" />
         <option value="$PROJECT_DIR$/services/pom.xml" />
         <option value="$PROJECT_DIR$/services/payment/pom.xml" />
+        <option value="$USER_HOME$/Downloads/microservices-full-code-main/microservices-full-code-main/services/payment/pom.xml" />
+        <option value="$PROJECT_DIR$/services/notification/pom.xml" />
+        <option value="$PROJECT_DIR$/services/gateway/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$USER_HOME$/Downloads/microservices-full-code-main/microservices-full-code-main/services/payment/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="17" project-jdk-type="JavaSDK">
