@@ -21,7 +21,6 @@ public class PaymentService {
                 request.customer().firstname(),
                 request.customer().lastname(),
                 request.customer().email()
-
         ));
         return payment.getId();
     }

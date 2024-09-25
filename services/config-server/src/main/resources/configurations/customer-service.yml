@@ -3,7 +3,7 @@ spring:
     mongodb:
       username: alibou
       password: alibou
-      additional-hosts: localhost
+      hosts: localhost
       port: 27017
       database: customer
       authentication-database: admin
